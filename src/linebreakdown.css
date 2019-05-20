@@ -14,6 +14,12 @@
   margin: 0 auto;
 }
 
+.stat {
+  font-family: "Alfa Slab One";
+  font-size: 1.5em;
+  color: #6fa698;
+}
+
 table {
   margin: 0 auto;
 }
