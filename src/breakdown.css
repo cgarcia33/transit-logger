@@ -8,3 +8,13 @@
   text-align: center;
   margin: 0 auto;
 }
+
+h2 {
+  text-decoration: underline;
+}
+
+.stat {
+  font-family: "Alfa Slab One", cursive;
+  font-size: 1.5em;
+  color: #6fa698;
+}
