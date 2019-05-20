@@ -1,0 +1,58 @@
+{
+  "lines": [
+    {
+      "name": "Purple Line",
+      "id": "pur",
+      "color": "#542e91",
+      "img": "./static/images/pur.jpg"
+    },
+    {
+      "name": "Red Line",
+      "id": "red",
+      "color": "#c81f32",
+      "img": "./static/images/red.jpg"
+    },
+    {
+      "name": "Brown Line",
+      "id": "bro",
+      "color": "#62361d",
+      "img": "./static/images/bro.jpg"
+    },
+    {
+      "name": "Blue Line",
+      "id": "blu",
+      "color": "#18a0dc",
+      "img": "./static/images/blu.jpg"
+    },
+    {
+      "name": "Milwauke West",
+      "id": "mdw",
+      "color": "#f4b148",
+      "img": "./static/images/mdn.png"
+    },
+    {
+      "name": "UP North Line",
+      "id": "upn",
+      "color": "#125603",
+      "img": "./static/images/upn.png"
+    },
+    {
+      "name": "North Central Service",
+      "id": "ncs",
+      "color": "#c8a2c8",
+      "img": "./static/images/ncs.png"
+    },
+    {
+      "name": "303 Rosemont",
+      "id": "303",
+      "color": "#00539f",
+      "img": "./static/images/bus.jpg"
+    },
+    {
+      "name": "290 Touhy Avenue",
+      "id": "290",
+      "color": "#00539f",
+      "img": "./static/images/bus.jpg"
+    }
+  ]
+}
