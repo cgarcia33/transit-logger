@@ -1,0 +1,48 @@
+.LineBreakdown {
+  background-color: #143054;
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.recent-trips {
+  text-align: center;
+  margin: 0 auto;
+}
+
+table {
+  margin: 0 auto;
+}
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.tg td {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: white;
+}
+.tg th {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: white;
+}
+.tg .tg-0lax {
+  text-align: left;
+  vertical-align: top;
+}
