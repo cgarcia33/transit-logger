@@ -1,0 +1,21 @@
+.line-box {
+  height: 4em;
+  width: 20em;
+  border: 2px solid;
+  margin: 0.5em auto;
+}
+
+.line-pic {
+  height: 4em;
+  width: 5em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.line-name {
+  display: inline;
+  color: white;
+  font-size: 1.5em;
+  vertical-align: super;
+}
