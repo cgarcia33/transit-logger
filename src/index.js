@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import App from "./App";
-import Breakdown from "./Breakdown";
-import LineBreakdown from "./LineBreakdown";
+import Breakdown from "./components/Breakdown/Breakdown";
+import LineBreakdown from "./components/LineBreakdown/LineBreakdown";
 import "./index.css";
 
 class Routes extends React.Component {

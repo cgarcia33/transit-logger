@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./linebreakdown.css";
-import image from "./static/images/pur.jpg";
+import image from "../../static/images/pur.jpg";
 
 class LineBreakdown extends Component {
   state = { line: {} };
 
   componentDidMount() {
-    import("./static/combinedLines.json")
+    import("../../static/combinedLines.json")
       .then(json => {
         this.setState({ line: json.lines[0] });
       })
