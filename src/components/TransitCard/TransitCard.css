@@ -3,6 +3,7 @@
   width: 20em;
   border: 2px solid;
   margin: 0.5em auto;
+  border-radius: 1rem;
 }
 
 .line-pic {
@@ -11,6 +12,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
+  border-radius: 1rem;
 }
 
 .line-name {
@@ -18,4 +20,23 @@
   color: white;
   font-size: 1.5em;
   vertical-align: super;
+}
+
+.btn-row {
+  text-align: center;
+}
+
+.btn {
+  width: 6em;
+  height: 2.5em;
+  margin: 0 0.3em;
+  border-radius: 1rem;
+  background: #1e88e5;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
 }
