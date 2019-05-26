@@ -4,55 +4,195 @@
       "name": "Purple Line",
       "id": "pur",
       "color": "#542e91",
-      "img": "./static/images/pur.jpg"
+      "img": "./static/images/pur.jpg",
+      "stops": [
+        "Linden",
+        "Central",
+        "Noyes",
+        "Foster",
+        "Davis",
+        "Dempster",
+        "Main",
+        "South Blvd",
+        "Howard",
+        "Wilson",
+        "Belmont",
+        "Wellington",
+        "Diversey",
+        "Fullerton",
+        "Armitage",
+        "Sedgwick",
+        "Chicago",
+        "Merchandise Mart",
+        "Clark/Lake",
+        "State/Lake",
+        "Washington/Wabash",
+        "Adams/Wabash",
+        "Harold Washington Library",
+        "LaSalle/Van Buren",
+        "Quincy",
+        "Washington/Wells"
+      ]
     },
     {
       "name": "Red Line",
       "id": "red",
       "color": "#c81f32",
-      "img": "./static/images/red.jpg"
+      "img": "./static/images/red.jpg",
+      "stops": [
+        "Howard",
+        "Jarvis",
+        "Morse",
+        "Loyola",
+        "Granville",
+        "Thorndale",
+        "Bryn Mawr",
+        "Berwyn",
+        "Argyle",
+        "Lawerence",
+        "Wilson",
+        "Sheridan",
+        "Addison",
+        "Belmont",
+        "Fullerton",
+        "North/Clybourn",
+        "Clark/Division",
+        "Chicago",
+        "Grand",
+        "Lake",
+        "Monroe",
+        "Jackson",
+        "Harrison",
+        "Roosevelt"
+      ]
     },
     {
       "name": "Brown Line",
       "id": "bro",
       "color": "#62361d",
-      "img": "./static/images/bro.jpg"
+      "img": "./static/images/bro.jpg",
+      "stops": [
+        "Belmont",
+        "Wellington",
+        "Diversey",
+        "Fullerton",
+        "Armitage",
+        "Sedgwick",
+        "Chicago",
+        "Merchandise Mart",
+        "Clark/Lake",
+        "State/Lake",
+        "Washington/Wabash",
+        "Adams/Wabash",
+        "Harold Washington Library",
+        "LaSalle/Van Buren",
+        "Quincy",
+        "Washington/Wells"
+      ]
     },
     {
       "name": "Blue Line",
       "id": "blu",
       "color": "#18a0dc",
-      "img": "./static/images/blu.jpg"
+      "img": "./static/images/blu.jpg",
+      "stops": [
+        "O'Hare",
+        "Rosemont",
+        "Cumberland",
+        "Harlem",
+        "Jefferson Park",
+        "Montrose",
+        "Irving Park",
+        "Addison",
+        "Belmont",
+        "Logan Square",
+        "California",
+        "Western",
+        "Damen",
+        "Division",
+        "Chicago",
+        "Grand",
+        "Clark/Lake",
+        "Washington",
+        "Monroe",
+        "Jackson",
+        "LaSalle",
+        "Clinton",
+        "UIC-Halsted"
+      ]
     },
     {
       "name": "Milwaukee West",
       "id": "mdw",
       "color": "#f4b148",
-      "img": "./static/images/mdn.png"
+      "img": "./static/images/mdn.png",
+      "stops": [
+        "Chicago Union Station",
+        "Western Avenue",
+        "Grand/Cicero",
+        "Hanson Park",
+        "Galewood",
+        "Mars",
+        "Mont Clare",
+        "Elmwood Park",
+        "River Grove",
+        "Franklin Park",
+        "Mannheim",
+        "Bensenville",
+        "Wood Dale",
+        "Itasca",
+        "Medinah",
+        "Roselle",
+        "Schaumburg",
+        "Hanover Park",
+        "Bartlett",
+        "National St",
+        "Elgin",
+        "Big Timber"
+      ]
     },
     {
       "name": "Union Pacific North",
       "id": "upn",
       "color": "#125603",
-      "img": "./static/images/upn.png"
+      "img": "./static/images/upn.png",
+      "stops": [
+        "Ogilvie Transportation Center",
+        "Clybourne",
+        "Ravenswood",
+        "Rogers Park",
+        "Main",
+        "Davis",
+        "Central",
+        "Wilmette"
+      ]
     },
     {
       "name": "North Central Service",
       "id": "ncs",
       "color": "#c8a2c8",
-      "img": "./static/images/ncs.png"
+      "img": "./static/images/ncs.png",
+      "stops": ["Chicago Union Station", "River Grove", "Franklin Park"]
     },
     {
       "name": "303 Rosemont",
       "id": "303",
       "color": "#00539f",
-      "img": "./static/images/bus.jpg"
+      "img": "./static/images/bus.jpg",
+      "stops": [
+        "Rose St & Schiller Blvd",
+        "Rose St & Franklin Ave",
+        "Rose St & Belmont Ave",
+        "Rose St & Gage Ave",
+        "Rosemont CTA station"
+      ]
     },
     {
       "name": "290 Touhy Avenue",
       "id": "290",
       "color": "#00539f",
-      "img": "./static/images/bus.jpg"
+      "img": "./static/images/bus.jpg",
+      "stops": ["Cumberland CTA station", "Howard CTA station"]
     }
   ]
 }
