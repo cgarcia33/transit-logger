@@ -25,13 +25,13 @@
       "img": "./static/images/blu.jpg"
     },
     {
-      "name": "Milwauke West",
+      "name": "Milwaukee West",
       "id": "mdw",
       "color": "#f4b148",
       "img": "./static/images/mdn.png"
     },
     {
-      "name": "UP North Line",
+      "name": "Union Pacific North",
       "id": "upn",
       "color": "#125603",
       "img": "./static/images/upn.png"
