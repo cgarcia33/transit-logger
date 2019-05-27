@@ -12,7 +12,7 @@ class TransitCard extends Component {
 
   componentDidMount() {
     this.setState({ station: this.props.transitLine.stops[0] });
-    fetch(`http://localhost:5000/api/status/${this.props.transitLine.id}`)
+    fetch(`http://3.16.192.21:5000/api/status/${this.props.transitLine.id}`)
       .then(data => data.json())
       .then(status => this.setState({ ongoingTrip: status.ongoing }));
   }
@@ -73,11 +73,14 @@ class TransitCard extends Component {
 
   startTrip = () => {
     axios
-      .patch(`http://localhost:5000/api/status/${this.props.transitLine.id}`, {
-        ongoing: "true"
-      })
+      .patch(
+        `http://3.16.192.21:5000/api/status/${this.props.transitLine.id}`,
+        {
+          ongoing: "true"
+        }
+      )
       .then(
-        axios.post("http://localhost:5000/api/trips", {
+        axios.post("http://3.16.192.21:5000/api/trips", {
           line: this.props.transitLine.id,
           origin: this.state.station
         })
@@ -87,11 +90,14 @@ class TransitCard extends Component {
 
   endTrip = () => {
     axios
-      .patch(`http://localhost:5000/api/status/${this.props.transitLine.id}`, {
-        ongoing: "false"
-      })
+      .patch(
+        `http://3.16.192.21:5000/api/status/${this.props.transitLine.id}`,
+        {
+          ongoing: "false"
+        }
+      )
       .then(
-        axios.patch("http://localhost:5000/api/trips", {
+        axios.patch("http://3.16.192.21:5000/api/trips", {
           line: this.props.transitLine.id,
           destination: this.state.station
         })
