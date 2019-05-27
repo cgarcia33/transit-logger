@@ -12,6 +12,7 @@ const db = require("./keys").mongoURI;
 
 // Models
 const LineStatus = require("./models/Status");
+const Trip = require("./models/Trip");
 
 // Connect to Mongo
 mongoose
@@ -35,6 +36,26 @@ app.patch("/api/status/:line", (req, res) => {
   LineStatus.findByIdAndUpdate(req.params.line, req.body).then(status =>
     res.send(status)
   );
+});
+
+// @route   POST /api/trips
+// @desc    Post a new trip along with the line and its station of origin
+app.post("/api/trips/", (req, res) => {
+  const newTrip = new Trip({
+    line: req.body.line,
+    origin: req.body.origin
+  });
+
+  newTrip.save().then(trip => res.send(trip));
+});
+
+// @route   PATCH /api/trips
+// @desc    Update the trip with its destination and the time it ended (route called at end of trip)
+app.patch("/api/trips/", (req, res) => {
+  Trip.findOneAndUpdate(
+    { line: req.body.line, end: null },
+    { destination: req.body.destination, end: Date.now() }
+  ).then(trip => res.send(trip));
 });
 
 const port = process.env.PORT || 5000;
