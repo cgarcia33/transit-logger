@@ -2,7 +2,18 @@ import React, { Component } from "react";
 import "./TransitCard.css";
 
 class TransitCard extends Component {
-  state = { showButtons: false, setupTrip: false, origin: "Origin" };
+  state = {
+    showButtons: false,
+    setupTrip: false,
+    origin: "",
+    ongoingTrip: false
+  };
+
+  componentDidMount() {
+    fetch(`http://localhost:5000/api/status/${this.props.transitLine.id}`)
+      .then(data => data.json())
+      .then(status => this.setState({ ongoingTrip: status.ongoing }));
+  }
 
   handleClick = () => {
     this.setState({ showButtons: !this.state.showButtons });
@@ -14,9 +25,15 @@ class TransitCard extends Component {
   renderButtons = () => {
     return this.state.showButtons ? (
       <div className="btn-row">
-        <button className="btn" onClick={this.setupTrip}>
-          New Trip
-        </button>
+        {this.state.ongoingTrip ? (
+          <button className="end-btn btn" onClick={this.setupTrip}>
+            End Trip
+          </button>
+        ) : (
+          <button className="btn" onClick={this.setupTrip}>
+            New Trip
+          </button>
+        )}
         <button className="btn">Breakdown</button>
         {this.renderSetup()}
       </div>

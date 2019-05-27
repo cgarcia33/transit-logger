@@ -41,6 +41,10 @@
   cursor: pointer;
 }
 
+.end-btn {
+  background: rgb(214, 70, 70);
+}
+
 .stop-list {
   display: block;
   margin: 0.5em auto;
