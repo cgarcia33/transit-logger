@@ -9,16 +9,16 @@ app.use(cors());
 // Bodyparser Middleware
 app.use(bodyParser.json());
 
-// DB Config
-const db = require("./keys").mongoURI;
-
 // Models
 const LineStatus = require("./models/Status");
 const Trip = require("./models/Trip");
 
 // Connect to Mongo
 mongoose
-  .connect(db, { dbName: "transitDB", useNewUrlParser: true })
+  .connect(process.env.MONGO_URI, {
+    dbName: "transitDB",
+    useNewUrlParser: true
+  })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
