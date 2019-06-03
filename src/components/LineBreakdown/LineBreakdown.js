@@ -6,10 +6,18 @@ class LineBreakdown extends Component {
 
   componentDidMount() {
     this.setState({ line: this.props.location.state.line });
-    fetch(`/api/breakdown/${this.props.location.state.line.id}`)
+    fetch(
+      `https://transit-logger-server.herokuapp.com/api/breakdown/${
+        this.props.location.state.line.id
+      }`
+    )
       .then(data => data.json())
       .then(transitStats => this.setState({ stats: transitStats }));
-    fetch(`/api/trips/${this.props.location.state.line.id}`)
+    fetch(
+      `https://transit-logger-server.herokuapp.com/api/trips/${
+        this.props.location.state.line.id
+      }`
+    )
       .then(data => data.json())
       .then(lineTrips => this.setState({ trips: lineTrips }));
   }

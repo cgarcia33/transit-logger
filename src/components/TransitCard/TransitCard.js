@@ -14,7 +14,11 @@ class TransitCard extends Component {
 
   componentDidMount() {
     this.setState({ station: this.props.transitLine.stops[0] });
-    fetch(`/api/status/${this.props.transitLine.id}`)
+    fetch(
+      `https://transit-logger-server.herokuapp.com/api/status/${
+        this.props.transitLine.id
+      }`
+    )
       .then(data => data.json())
       .then(status =>
         this.setState({ ongoingTrip: status.ongoing, time: status.toggleTime })
@@ -84,12 +88,17 @@ class TransitCard extends Component {
 
   startTrip = () => {
     axios
-      .patch(`/api/status/${this.props.transitLine.id}`, {
-        ongoing: "true",
-        toggleTime: Date.now()
-      })
+      .patch(
+        `https://transit-logger-server.herokuapp.com/api/status/${
+          this.props.transitLine.id
+        }`,
+        {
+          ongoing: "true",
+          toggleTime: Date.now()
+        }
+      )
       .then(
-        axios.post("/api/trips", {
+        axios.post("https://transit-logger-server.herokuapp.com/api/trips", {
           line: this.props.transitLine.id,
           origin: this.state.station
         })
@@ -99,11 +108,16 @@ class TransitCard extends Component {
 
   endTrip = () => {
     axios
-      .patch(`/api/status/${this.props.transitLine.id}`, {
-        ongoing: "false"
-      })
+      .patch(
+        `https://transit-logger-server.herokuapp.com/api/status/${
+          this.props.transitLine.id
+        }`,
+        {
+          ongoing: "false"
+        }
+      )
       .then(
-        axios.patch("/api/trips", {
+        axios.patch("https://transit-logger-server.herokuapp.com/api/trips", {
           line: this.props.transitLine.id,
           destination: this.state.station,
           startTime: this.state.time

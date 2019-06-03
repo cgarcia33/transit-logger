@@ -5,7 +5,7 @@ class Breakdown extends Component {
   state = { stats: null };
 
   componentDidMount() {
-    fetch("/api/breakdown")
+    fetch("https://transit-logger-server.herokuapp.com/api/breakdown")
       .then(data => data.json())
       .then(transitStats => this.setState({ stats: transitStats }));
   }
