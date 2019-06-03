@@ -24,7 +24,8 @@ const TripSchema = new Schema({
     default: null
   },
   timeElapsed: {
-    type: Number
+    type: Number,
+    default: 0
   }
 });
 
