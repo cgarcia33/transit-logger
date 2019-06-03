@@ -2,27 +2,39 @@ import React, { Component } from "react";
 import "./breakdown.css";
 
 class Breakdown extends Component {
-  state = {};
+  state = { stats: null };
+
+  componentDidMount() {
+    fetch("/api/breakdown")
+      .then(data => data.json())
+      .then(transitStats => this.setState({ stats: transitStats }));
+  }
+
+  convertToHoursAndMinutes = time => {
+    let hours = Math.floor(time / 60);
+    var minutes = time % 60;
+    return `${hours} hours ${minutes} minutes`;
+  };
 
   render() {
-    return (
+    return this.state.stats ? (
       <div className="Breakdown">
         <h1>Breakdown</h1>
         <div className="stats">
           <h2>Total Time Spent Commuting</h2>
-          <div className="stat">50 hours</div>
-          <h2>Average Commute</h2>
-          <div className="stat">1 hour 50 minutes</div>
-          <h2>Longest Commute</h2>
-          <div className="stat">2 hours 45 minutes</div>
-          <h2>Shortest Commute</h2>
-          <div className="stat">1 hour 10 minutes</div>
-          <h2>Most Used Transit Line</h2>
-          <div className="stat"> Purple Line</div>
-          <h2>Least Used Transit Line</h2>
-          <div className="stat">Pace 290 Touhy</div>
+          <div className="stat">
+            {this.convertToHoursAndMinutes(this.state.stats.total)}
+          </div>
+          <h2>Average Trip Length</h2>
+          <div className="stat">{this.state.stats.avgTime} minutes</div>
+          <h2>Longest Trip Length</h2>
+          <div className="stat">{this.state.stats.maxTime} minutes</div>
+          <h2>Shortest Trip Length</h2>
+          <div className="stat">{this.state.stats.minTime} minutes</div>
         </div>
       </div>
+    ) : (
+      <h1>Breakdown loading</h1>
     );
   }
 }
