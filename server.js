@@ -94,6 +94,31 @@ app.get("/api/breakdown", (req, res) => {
   ]).then(breakdown => res.send(breakdown[0]));
 });
 
+// @route   GET /api/breakdown/:line
+// @desc    Get breakdown of all trips on specific line
+app.get("/api/breakdown/:line", (req, res) => {
+  Trip.aggregate([
+    { $match: { line: req.params.line } },
+    {
+      $group: {
+        _id: null,
+        total: {
+          $sum: "$timeElapsed"
+        },
+        avgTime: {
+          $avg: "$timeElapsed"
+        },
+        minTime: {
+          $min: "$timeElapsed"
+        },
+        maxTime: {
+          $max: "$timeElapsed"
+        }
+      }
+    }
+  ]).then(lineBreakdown => res.send(lineBreakdown[0]));
+});
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
