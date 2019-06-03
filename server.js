@@ -70,6 +70,30 @@ const calculateTimeElapsed = start => {
   return Math.round((endDate.getTime() - startDate.getTime()) / 60000);
 };
 
+// @route   GET /api/breakdown
+// @desc    Get breakdown of all trips across all lines
+app.get("/api/breakdown", (req, res) => {
+  Trip.aggregate([
+    {
+      $group: {
+        _id: null,
+        total: {
+          $sum: "$timeElapsed"
+        },
+        avgTime: {
+          $avg: "$timeElapsed"
+        },
+        minTime: {
+          $min: "$timeElapsed"
+        },
+        maxTime: {
+          $max: "$timeElapsed"
+        }
+      }
+    }
+  ]).then(breakdown => res.send(breakdown[0]));
+});
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
