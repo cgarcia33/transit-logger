@@ -25,7 +25,6 @@ class App extends Component {
         ))}
         <div className="links">
           <Link to="/breakdown">Breakdown</Link>
-          <Link to="/linebreakdown">Line Breakdown</Link>
         </div>
       </div>
     );
