@@ -43,7 +43,9 @@ app.patch("/api/status/:line", (req, res) => {
 // @route   GET /api/trips/:line
 // @desc    Get trips made on a specific line
 app.get("/api/trips/:line", (req, res) => {
-  Trip.find({ line: req.params.line }).then(trips => res.send(trips));
+  Trip.find({ line: req.params.line })
+    .limit(4)
+    .then(trips => res.send(trips));
 });
 
 // @route   POST /api/trips
