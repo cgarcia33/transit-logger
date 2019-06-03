@@ -40,6 +40,12 @@ app.patch("/api/status/:line", (req, res) => {
   );
 });
 
+// @route   GET /api/trips/:line
+// @desc    Get trips made on a specific line
+app.get("/api/trips/:line", (req, res) => {
+  Trip.find({ line: req.params.line }).then(trips => res.send(trips));
+});
+
 // @route   POST /api/trips
 // @desc    Post a new trip along with the line and its station of origin
 app.post("/api/trips/", (req, res) => {
