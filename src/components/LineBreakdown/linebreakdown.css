@@ -52,3 +52,12 @@ table {
   text-align: left;
   vertical-align: top;
 }
+
+.line-logo {
+  height: 8em;
+  width: 8em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  border-radius: 1em;
+}

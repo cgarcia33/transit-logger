@@ -1,34 +1,52 @@
 import React, { Component } from "react";
 import "./linebreakdown.css";
-import image from "../../static/images/pur.jpg";
 
 class LineBreakdown extends Component {
-  state = { line: {} };
+  state = { line: null, stats: null, trips: null };
 
   componentDidMount() {
-    import("../../static/combinedLines.json")
-      .then(json => {
-        this.setState({ line: json.lines[0] });
-      })
-      .catch(error => {
-        alert(error);
-      });
+    this.setState({ line: this.props.location.state.line });
+    fetch(`/api/breakdown/${this.props.location.state.line.id}`)
+      .then(data => data.json())
+      .then(transitStats => this.setState({ stats: transitStats }));
+    fetch(`/api/trips/${this.props.location.state.line.id}`)
+      .then(data => data.json())
+      .then(lineTrips => this.setState({ trips: lineTrips }));
   }
 
+  convertToHoursAndMinutes = time => {
+    let hours = Math.floor(time / 60);
+    var minutes = time % 60;
+    return `${hours} hours ${minutes} minutes`;
+  };
+
+  formatDate = date => {
+    return date.split("T")[0];
+  };
+
   render() {
-    return (
+    return this.state.line && this.state.stats && this.state.trips ? (
       <div className="LineBreakdown">
         <h1>{this.state.line.name} Breakdown</h1>
-        <img src={image} alt="line logo" />
+        <div
+          className="line-logo"
+          style={{
+            backgroundImage: `url(${require(`../../static/images/${
+              this.state.line.id
+            }.jpg`)})`
+          }}
+        />
         <div className="stats">
           <h2>Total Time Spent Commuting</h2>
-          <div className="stat">20 hours</div>
-          <h2>Average Commute</h2>
-          <div className="stat">45 minutes</div>
-          <h2>Longest Commute</h2>
-          <div className="stat">1 hours 5 minutes</div>
-          <h2>Shortest Commute</h2>
-          <div className="stat">40 minutes</div>
+          <div className="stat">
+            {this.convertToHoursAndMinutes(this.state.stats.total)}
+          </div>
+          <h2>Average Trip Length</h2>
+          <div className="stat">{this.state.stats.avgTime} minutes</div>
+          <h2>Longest Trip Length</h2>
+          <div className="stat">{this.state.stats.maxTime} minutes</div>
+          <h2>Shortest Trip Length</h2>
+          <div className="stat">{this.state.stats.minTime} minutes</div>
         </div>
         <div className="recent-trips">
           <h2>Recent Trips</h2>
@@ -40,34 +58,20 @@ class LineBreakdown extends Component {
                 <th className="tg-0lax">Destination</th>
                 <th className="tg-0lax">Time</th>
               </tr>
-              <tr>
-                <td className="tg-0lax">5/17/19</td>
-                <td className="tg-0lax">Noyes</td>
-                <td className="tg-0lax">Quincy</td>
-                <td className="tg-0lax">45 minutes</td>
-              </tr>
-              <tr>
-                <td className="tg-0lax">5/17/19</td>
-                <td className="tg-0lax">Quincy</td>
-                <td className="tg-0lax">Noyes</td>
-                <td className="tg-0lax">48 minutes</td>
-              </tr>
-              <tr>
-                <td className="tg-0lax">5/18/19</td>
-                <td className="tg-0lax">Noyes </td>
-                <td className="tg-0lax">Quincy</td>
-                <td className="tg-0lax">46 minutes</td>
-              </tr>
-              <tr>
-                <td className="tg-0lax">5/16/19</td>
-                <td className="tg-0lax">Quincy</td>
-                <td className="tg-0lax">Foster</td>
-                <td className="tg-0lax">44 minutes</td>
-              </tr>
+              {this.state.trips.map((trip, i) => (
+                <tr>
+                  <td className="tg-0lax">{this.formatDate(trip.start)}</td>
+                  <td className="tg-0lax">{trip.origin}</td>
+                  <td className="tg-0lax">{trip.destination}</td>
+                  <td className="tg-0lax">{trip.timeElapsed} minutes</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
+    ) : (
+      <h1>Line Breakdown loading</h1>
     );
   }
 }
