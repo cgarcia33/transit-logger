@@ -7,18 +7,17 @@ class TransitCard extends Component {
     showButtons: false,
     setupTrip: false,
     station: "",
-    ongoingTrip: false
+    ongoingTrip: false,
+    time: null
   };
 
   componentDidMount() {
     this.setState({ station: this.props.transitLine.stops[0] });
-    fetch(
-      `https://transit-logger-server.herokuapp.com/api/status/${
-        this.props.transitLine.id
-      }`
-    )
+    fetch(`/api/status/${this.props.transitLine.id}`)
       .then(data => data.json())
-      .then(status => this.setState({ ongoingTrip: status.ongoing }));
+      .then(status =>
+        this.setState({ ongoingTrip: status.ongoing, time: status.toggleTime })
+      );
   }
 
   handleCardClick = () => {
@@ -77,16 +76,12 @@ class TransitCard extends Component {
 
   startTrip = () => {
     axios
-      .patch(
-        `https://transit-logger-server.herokuapp.com/api/status/${
-          this.props.transitLine.id
-        }`,
-        {
-          ongoing: "true"
-        }
-      )
+      .patch(`/api/status/${this.props.transitLine.id}`, {
+        ongoing: "true",
+        toggleTime: Date.now()
+      })
       .then(
-        axios.post("https://transit-logger-server.herokuapp.com/api/trips", {
+        axios.post("/api/trips", {
           line: this.props.transitLine.id,
           origin: this.state.station
         })
@@ -96,18 +91,14 @@ class TransitCard extends Component {
 
   endTrip = () => {
     axios
-      .patch(
-        `https://transit-logger-server.herokuapp.com/api/status/${
-          this.props.transitLine.id
-        }`,
-        {
-          ongoing: "false"
-        }
-      )
+      .patch(`/api/status/${this.props.transitLine.id}`, {
+        ongoing: "false"
+      })
       .then(
-        axios.patch("https://transit-logger-server.herokuapp.com/api/trips", {
+        axios.patch("/api/trips", {
           line: this.props.transitLine.id,
-          destination: this.state.station
+          destination: this.state.station,
+          startTime: this.state.time
         })
       )
       .then(

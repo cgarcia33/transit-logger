@@ -27,7 +27,7 @@ mongoose
 // @route   GET /api/status/:line
 // @desc    Get status of line (ongoing trip or not?)
 app.get("/api/status/:line", (req, res) => {
-  LineStatus.findById(req.params.line, "ongoing -_id").then(status =>
+  LineStatus.findById(req.params.line, "ongoing toggleTime -_id").then(status =>
     res.send(status)
   );
 });
@@ -56,9 +56,19 @@ app.post("/api/trips/", (req, res) => {
 app.patch("/api/trips/", (req, res) => {
   Trip.findOneAndUpdate(
     { line: req.body.line, end: null },
-    { destination: req.body.destination, end: Date.now() }
+    {
+      destination: req.body.destination,
+      end: Date.now(),
+      timeElapsed: calculateTimeElapsed(req.body.startTime)
+    }
   ).then(trip => res.send(trip));
 });
+
+const calculateTimeElapsed = start => {
+  let startDate = new Date(start);
+  let endDate = new Date();
+  return Math.round((endDate.getTime() - startDate.getTime()) / 60000);
+};
 
 const port = process.env.PORT || 5000;
 
