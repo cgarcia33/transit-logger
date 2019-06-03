@@ -10,6 +10,10 @@ const StatusSchema = new Schema({
   _id: {
     type: String,
     required: true
+  },
+  toggleTime: {
+    type: Date,
+    default: Date.now()
   }
 });
 
