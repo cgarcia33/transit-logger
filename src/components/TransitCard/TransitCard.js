@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./TransitCard.css";
 
@@ -39,7 +40,14 @@ class TransitCard extends Component {
             New Trip
           </button>
         )}
-        <button className="btn">Breakdown</button>
+        <Link
+          to={{
+            pathname: `/linebreakdown/${this.props.transitLine.id}`,
+            state: { line: this.props.transitLine }
+          }}
+        >
+          <button className="btn">Breakdown</button>
+        </Link>
         {this.renderSetup()}
       </div>
     ) : null;
