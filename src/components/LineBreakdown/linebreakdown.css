@@ -16,17 +16,34 @@
 
 .stat {
   font-family: "Alfa Slab One";
-  font-size: 1.5em;
   color: #6fa698;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+.stat-card {
+  margin-bottom: 2.5em;
+}
+
+.stat-card p {
+  font-weight: 800;
+  font-size: 1.2em;
+}
+
+.recent-trips p {
+  font-weight: 800;
+  font-size: 1.2em;
 }
 
 table {
-  margin: 0 auto;
+  margin: 1.5em auto;
 }
+
 .tg {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 .tg td {
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -37,6 +54,7 @@ table {
   word-break: normal;
   border-color: white;
 }
+
 .tg th {
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -48,9 +66,22 @@ table {
   word-break: normal;
   border-color: white;
 }
+
 .tg .tg-0lax {
   text-align: left;
   vertical-align: top;
+}
+
+thead th {
+  background-color: #272323;
+}
+
+tr {
+  background: #4973a9;
+}
+
+tr:nth-child(even) {
+  background: #518f66;
 }
 
 .line-logo {
@@ -60,4 +91,8 @@ table {
   background-repeat: no-repeat;
   display: inline-block;
   border-radius: 1em;
+}
+
+body {
+  background-color: #143054;
 }

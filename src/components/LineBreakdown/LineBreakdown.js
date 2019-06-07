@@ -45,29 +45,39 @@ class LineBreakdown extends Component {
           }}
         />
         <div className="stats">
-          <h2>Total Time Spent Commuting</h2>
-          <div className="stat">
-            {this.convertToHoursAndMinutes(this.state.stats.total)}
+          <div className="stat-card">
+            <p>Total Time</p>
+            <div className="stat">
+              {this.convertToHoursAndMinutes(this.state.stats.total)}
+            </div>
           </div>
-          <h2>Average Trip Length</h2>
-          <div className="stat">
-            {this.state.stats.avgTime.toFixed(1)} minutes
+          <div className="stat-card">
+            <p>Average Trip</p>
+            <div className="stat">
+              {this.state.stats.avgTime.toFixed(1)} minutes
+            </div>
           </div>
-          <h2>Longest Trip Length</h2>
-          <div className="stat">{this.state.stats.maxTime} minutes</div>
-          <h2>Shortest Trip Length</h2>
-          <div className="stat">{this.state.stats.minTime} minutes</div>
+          <div className="stat-card">
+            <p>Longest Trip</p>
+            <div className="stat">{this.state.stats.maxTime} minutes</div>
+          </div>
+          <div className="stat-card">
+            <p>Shortest Trip</p>
+            <div className="stat">{this.state.stats.minTime} minutes</div>
+          </div>
         </div>
         <div className="recent-trips">
-          <h2>Recent Trips</h2>
+          <p>Recent Trips</p>
           <table className="tg">
-            <tbody>
+            <thead>
               <tr>
                 <th className="tg-0lax">Date</th>
                 <th className="tg-0lax">Origin</th>
                 <th className="tg-0lax">Destination</th>
                 <th className="tg-0lax">Time</th>
               </tr>
+            </thead>
+            <tbody>
               {this.state.trips.map((trip, i) => (
                 <tr>
                   <td className="tg-0lax">{this.formatDate(trip.start)}</td>

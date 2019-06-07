@@ -21,16 +21,24 @@ class Breakdown extends Component {
       <div className="Breakdown">
         <h1>Breakdown</h1>
         <div className="stats">
-          <h2>Total Time Spent Commuting</h2>
-          <div className="stat">
-            {this.convertToHoursAndMinutes(this.state.stats.total)}
+          <div className="stat-card">
+            <p>Total Time Spent Commuting</p>
+            <div className="stat">
+              {this.convertToHoursAndMinutes(this.state.stats.total)}
+            </div>
           </div>
-          <h2>Average Trip Length</h2>
-          <div className="stat">{this.state.stats.avgTime} minutes</div>
-          <h2>Longest Trip Length</h2>
-          <div className="stat">{this.state.stats.maxTime} minutes</div>
-          <h2>Shortest Trip Length</h2>
-          <div className="stat">{this.state.stats.minTime} minutes</div>
+          <div className="stat-card">
+            <p>Average Trip</p>
+            <div className="stat">{this.state.stats.avgTime} minutes</div>
+          </div>
+          <div className="stat-card">
+            <p>Longest Trip</p>
+            <div className="stat">{this.state.stats.maxTime} minutes</div>
+          </div>
+          <div className="stat-card">
+            <p>Shortest Trip</p>
+            <div className="stat">{this.state.stats.minTime} minutes</div>
+          </div>
         </div>
       </div>
     ) : (
