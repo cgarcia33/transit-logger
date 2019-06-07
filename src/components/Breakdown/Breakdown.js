@@ -29,7 +29,7 @@ class Breakdown extends Component {
           </div>
           <div className="stat-card">
             <p>Average Trip</p>
-            <div className="stat">{this.state.stats.avgTime} minutes</div>
+            <div className="stat">{this.state.stats.avgTime.toFixed(1)} minutes</div>
           </div>
           <div className="stat-card">
             <p>Longest Trip</p>
