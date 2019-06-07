@@ -50,7 +50,9 @@ class LineBreakdown extends Component {
             {this.convertToHoursAndMinutes(this.state.stats.total)}
           </div>
           <h2>Average Trip Length</h2>
-          <div className="stat">{this.state.stats.avgTime} minutes</div>
+          <div className="stat">
+            {this.state.stats.avgTime.toFixed(1)} minutes
+          </div>
           <h2>Longest Trip Length</h2>
           <div className="stat">{this.state.stats.maxTime} minutes</div>
           <h2>Shortest Trip Length</h2>
