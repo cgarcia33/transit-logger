@@ -44,6 +44,7 @@ app.patch("/api/status/:line", (req, res) => {
 // @desc    Get trips made on a specific line
 app.get("/api/trips/:line", (req, res) => {
   Trip.find({ line: req.params.line })
+    .sort({ _id: -1 })
     .limit(4)
     .then(trips => res.send(trips));
 });
